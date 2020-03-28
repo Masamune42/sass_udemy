@@ -1,4 +1,4 @@
-# Cours 
+# Cours Sass
 ## Initialiser un projet
 SASS = Syntacticaly Awesome Style Sheets.
 C'est un pré-processor : comme un logiciel qui va exécuter du code SCSS pour en ressortir du CSS, créé en Ruby.
