@@ -1,0 +1,16 @@
+$primaryColor: purple;
+
+body {
+    background-color: gray;
+}
+
+header{
+    padding: 50px;
+    background-color: $primaryColor;
+    margin-bottom: 50px;
+}
+
+footer{
+    padding: 50px;
+    background-color: $primaryColor;
+}
