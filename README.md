@@ -257,3 +257,108 @@ body {
     }
 }
 ````
+
+### Les boucles @each
+Utilisées en général quand on a plusieurs images à créer
+````scss
+// On crée une classe avec une image en background avec un nom différent
+@each $name in mon-super-site, bootstrap, php, sass {
+    .#{$name}-icon {
+        background-image: url('/img/#{$name}.png');
+    }
+}
+````
+
+### Les boucles @while
+
+````scss
+$i: 0;
+@while $i <= 6 {
+    .grid-#{$i} {
+        width: 100px * $i;
+    }
+
+    $i: $i+1;
+}
+````
+
+## Astuces
+### Les listes
+````scss
+// liste avec 4 éléments séparés par des virgules
+// si un élément avec des espace, séparé par des "
+$list: mon-super-site, bootstrap, php, sass;
+````
+
+### La fonction nth
+````scss
+// nbth(liste, élément) -> l'index commence par 1 et pas 0.
+content: nth($list, 1);
+````
+
+### Ajouter des valeurs à une liste
+````scss
+$list: mon-super-site, bootstrap, php, sass;
+
+$langage: symfony;
+
+$list: append($list, $langage, comma);
+````
+
+### @at-root
+````scss
+// Exemple HS
+// Pour garder un harmonie dans le code et mettre le fade sous l'avatar sur lequel il est défini
+.avatar {
+  background-color: red;
+  height: 120px;
+  margin: 40px;
+  width: 120px;
+ 
+  @at-root {
+    @keyframes fade {
+      0% { transform: scale(1.0); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1.0); }
+      75% { transform: scale(1.2); }
+      100% { transform: scale(1.1); }
+    }
+  }
+  &:hover {
+    animation: fade .8s infinite ease-in alternate;
+  }
+}
+````
+
+### Les Maps
+````scss
+// Maps
+// Déclaration
+$default: (color: blue, font-size: 1em);
+// ...
+// Utilisation
+color: map-get($default, color);
+````
+
+### Exercice : Générateur de classes de couleurs
+1ère méthode :
+````scss
+$couleurs: (blue: blue, red: red, green: green, gray: gray, purple: purple);
+
+@each $key, $value in $couleurs {
+    .color-#{$value} {
+        color: $value;
+    }
+}
+````
+
+2e méthode :
+````scss
+$couleurs: blue, red, green, gray, purple;
+
+@each $value in $couleurs {
+    .color-#{$value} {
+        color: $value;
+    }
+}
+````

@@ -9,20 +9,6 @@ body {
   color: white;
   background-color: black; }
 
-footer {
-  padding: 50px;
-  font-family: 'Noto Sans TC', 'Roboto';
-  background-color: purple;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -ms-border-radius: 10px;
-  border-radius: 10px;
-  content: 1; }
-  footer span {
-    color: white; }
-    footer span:hover {
-      text-decoration: underline; }
-
 .alert-green, .alert-red {
   border: 1px solid yellow;
   padding: 15px;
@@ -31,6 +17,19 @@ footer {
   -webkit-border-radius: 15px;
   -ms-border-radius: 15px;
   border-radius: 15px; }
+  footer {
+    padding: 50px;
+    font-family: 'Noto Sans TC', 'Roboto';
+    background-color: purple;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    content: mon-super-site; }
+    footer span {
+      color: white; }
+      footer span:hover {
+        text-decoration: underline; }
 
 .alert-green {
   background-color: green; }
@@ -40,6 +39,7 @@ footer {
 
 #logo {
   width: 135px;
+  color: blue;
   margin-left: auto;
   margin-right: auto; }
 
@@ -65,5 +65,56 @@ footer {
 
 .grid-6 {
   width: 600px; }
+
+.mon-super-site-icon {
+  background-image: url("/img/mon-super-site.png"); }
+
+.bootstrap-icon {
+  background-image: url("/img/bootstrap.png"); }
+
+.php-icon {
+  background-image: url("/img/php.png"); }
+
+.sass-icon {
+  background-image: url("/img/sass.png"); }
+
+.symfony-icon {
+  background-image: url("/img/symfony.png"); }
+
+.grid-0 {
+  width: 0px; }
+
+.grid-1 {
+  width: 100px; }
+
+.grid-2 {
+  width: 200px; }
+
+.grid-3 {
+  width: 300px; }
+
+.grid-4 {
+  width: 400px; }
+
+.grid-5 {
+  width: 500px; }
+
+.grid-6 {
+  width: 600px; }
+
+.color-blue {
+  color: blue; }
+
+.color-red {
+  color: red; }
+
+.color-green {
+  color: green; }
+
+.color-gray {
+  color: gray; }
+
+.color-purple {
+  color: purple; }
 
 /*# sourceMappingURL=default.css.map */
