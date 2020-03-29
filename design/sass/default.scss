@@ -1,16 +1,103 @@
 $primaryColor: purple;
 
+$theme: white;
+
+@import 'header';
+
+@mixin border-radius($degres) {
+    -moz-border-radius: $degres;
+    -webkit-border-radius: $degres;
+    -ms-border-radius: $degres;
+    border-radius: $degres;
+}
+
+@function thewallstreet($nombreA, $nombreB) {
+    @return $nombreA / $nombreB+$nombreA * ($nombreB - $nombreA);
+}
+
+@mixin googleFonts($font) {
+    @import url('https://fonts.googleapis.com/css?family=#{$font}');
+}
+
+%theme {
+    @if ($theme==purple) {
+        color: purple;
+        background-color: white;
+    }
+
+    @else if($theme==white) {
+        color: white;
+        background-color: black;
+    }
+
+    @else {
+        color: black;
+        background-color: white;
+    }
+}
+
+// Fonts
+@include googleFonts(Roboto);
+@include googleFonts("Noto+Sans+TC");
+
 body {
-    background-color: gray;
+    @extend %theme;
+    // background-color: cyan;
 }
 
-header{
+footer {
     padding: 50px;
+    font-family: 'Noto Sans TC', 'Roboto';
     background-color: $primaryColor;
-    margin-bottom: 50px;
+    @include border-radius(10px);
+    content: thewallstreet(10, 10);
+
+    // footer span
+    span {
+        color: white;
+
+        // & == this
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
-footer{
-    padding: 50px;
-    background-color: $primaryColor;
+%alert {
+    border: 1px solid yellow;
+    padding: 15px;
+    color: white;
+    @include border-radius(15px);
+}
+
+.alert-green {
+    @extend %alert;
+    background-color: green;
+
+}
+
+.alert-red {
+    @extend %alert;
+    background-color: red;
+}
+
+@mixin center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo {
+    width: 135px;
+    @include center;
+}
+
+#slogan {
+    width: 150px;
+    @include center;
+}
+
+@for $i from 1 through 6 {
+    .grid-#{$i} {
+        width: 100px * $i;
+    }
 }

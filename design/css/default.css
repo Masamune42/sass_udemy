@@ -1,13 +1,69 @@
-body {
-  background-color: gray; }
-
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC");
 header {
   padding: 50px;
   background-color: purple;
   margin-bottom: 50px; }
 
+body {
+  color: white;
+  background-color: black; }
+
 footer {
   padding: 50px;
-  background-color: purple; }
+  font-family: 'Noto Sans TC', 'Roboto';
+  background-color: purple;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  content: 1; }
+  footer span {
+    color: white; }
+    footer span:hover {
+      text-decoration: underline; }
+
+.alert-green, .alert-red {
+  border: 1px solid yellow;
+  padding: 15px;
+  color: white;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px; }
+
+.alert-green {
+  background-color: green; }
+
+.alert-red {
+  background-color: red; }
+
+#logo {
+  width: 135px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#slogan {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.grid-1 {
+  width: 100px; }
+
+.grid-2 {
+  width: 200px; }
+
+.grid-3 {
+  width: 300px; }
+
+.grid-4 {
+  width: 400px; }
+
+.grid-5 {
+  width: 500px; }
+
+.grid-6 {
+  width: 600px; }
 
 /*# sourceMappingURL=default.css.map */

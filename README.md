@@ -66,6 +66,10 @@ $ sass C:\wamp64\www\Sass_udemy\design\sass\default.scss C:\wamp64\www\Sass_udem
 ````console
 $ sass --watch C:\wamp64\www\Sass_udemy\design\sass\default.scss:C:\wamp64\www\Sass_udemy\design\css\default.css
 ````
+OU (pour tout un dossier)
+````console
+$ sass --watch C:\wamp64\www\Sass_udemy\design\sass:C:\wamp64\www\Sass_udemy\design\css
+````
 
 ### Les variables
 ````scss
@@ -107,3 +111,149 @@ footer {
 ### Les commentaires
 - // -> Affiché en CSS
 - /* */ -> Non affiché en CSS
+
+### Les opérations simples
+````scss
+padding: 4px + 5px;
+
+$maVariableA = "Hello ";
+$maVariableB = "World";
+$total = $maVariableA + $maVariableB // "Hello World"
+
+padding: 200px / 20px; // ERREUR
+padding: 200px / 20; // OK
+
+padding: 200px * 20px; // ERREUR
+padding: 200px * 20; // OK
+````
+
+## Utiliser Sass
+### L'imbrication
+````scss
+footer {
+    padding: 50px;
+    background-color: $primaryColor;
+    // le texte du span dans footer sera en blanc
+    span {
+        color: white;
+    }
+}
+````
+
+### Rôle de l'opérateur
+
+### L'importation
+On crée un fichier _header. l'underscore indique à SASS que l'on ne veut pas qu'il transforme ce fichier en CSS. Il faut ensuite l'importé.
+````scss
+// design/sass/default.scss
+$primaryColor: purple;
+// A placer après la déclaration des variables
+@import 'header';
+````
+
+### L'héritage
+A utiliser quand plusieurs sélecteur utilisent des paramètres identiques.
+````scss
+// bloc à hériter
+%alert{
+    border: 1px solid yellow;
+    padding: 15px;
+    color: white;
+}
+
+.alert-green{
+    @extend %alert;
+    background-color: green;
+
+}
+
+.alert-red{
+    @extend %alert;
+    background-color: red;
+}
+````
+
+### Les mixins
+Ce sont des fonctions (avec ou sans paramètres). A utiliser quand plusieurs sélecteur utilisent des paramètres différents.
+````scss
+// design/sass/default.scss
+@mixin border-radius($degres) {
+    -moz-border-radius: $degres;
+    -webkit-border-radius : $degres;
+    -ms-border-radius: $degres;
+    border-radius: $degres;
+}
+// ...
+%alert {
+    border: 1px solid yellow;
+    padding: 15px;
+    color: white;
+    @include border-radius(15px);
+}
+````
+
+### Exercice : un mixin pour Google Fonts
+````scss
+@mixin googleFonts($font) {
+    @import url('https://fonts.googleapis.com/css?family=#{$font}');
+}
+// ...
+// Fonts
+@include googleFonts(Roboto);
+@include googleFonts("Noto+Sans+TC");
+// ...
+footer {
+  // ...
+  font-family: 'Noto Sans TC', 'Roboto';
+  // ...
+}
+````
+
+## Les fonctions
+### Fonctions natives
+https://sass-lang.com/documentation/modules
+
+### Créer sa fonction
+````scss
+// Créer
+@function thewallstreet($nombreA, $nombreB) {
+    @return $nombreA / $nombreB + $nombreA * ($nombreB - $nombreA);
+}
+// ...
+// Appeler
+content: thewallstreet(10, 10);
+````
+
+### Conditions @if, @else if et @else
+````scss
+$theme: white;
+// ...
+%theme {
+    @if ($theme == purple) {
+        color: purple;
+        background-color: white;
+    }
+    @else if($theme == white) {
+        color: white;
+        background-color: black;
+    } @else {
+        color: black;
+        background-color: white;
+    }
+}
+// ...
+body {
+    @extend %theme;
+}
+````
+
+### Les boucles @for
+````scss
+// Création de classes multiples
+// grid-1 -> width: 100px, grid-2 -> width: 200px...
+@for $i from 1 through 6 {
+    .grid-#{$i} {
+        width: 100px * $i;
+    }
+}
+````
